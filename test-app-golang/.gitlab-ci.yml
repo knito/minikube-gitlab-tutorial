@@ -17,7 +17,7 @@ go_compile:
 
 docker_build:
   stage: build_image
-  image: v20100/docker:1.11.2
+  image: alecitohidalgo/docker:1.11.2
   # before_script:
   #   - docker login -u $REGISTRY_LOGIN -p $REGISTRY_PASSWORD registry.universite-lyon.fr
   script:
@@ -38,7 +38,7 @@ docker_build:
 
 k8s_deploy:
   stage: deploy
-  image: v20100/kubectl:v1.5.3
+  image: alecitohidalgo/kubectl:v1.5.3
   script:
   - kubectl --namespace default patch deployment $CI_PROJECT_NAME -p "$KUBERNETES_PATCH"
   variables:
@@ -50,7 +50,7 @@ k8s_deploy:
 
 k8s_install_deployment_on_failure:
   stage: create_deploy
-  image: v20100/kubectl:v1.5.3
+  image: alecitohidalgo/kubectl:v1.5.3
   script:
   - kubectl --namespace default create -f k8s -R
   dependencies:

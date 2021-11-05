@@ -21,7 +21,7 @@ all: gobuild
 	sleep 10
 	kubectl logs -f --namespace gitlab $(kubectl get pod --namespace gitlab -l 'service=gitlab' -o json |jq '.items[0].metadata.name' -r)
 	open http://gitlab/profile/account
-	@echo export GITLAB_PRIVATE_TOKEN="***"
+	@echo export GITLAB_PRIVATE_TOKEN=eywSs8QUgrS7BhHwHkvE
 
 05-gitlab-runner:
 	kubectl create -f gitlab-runner
