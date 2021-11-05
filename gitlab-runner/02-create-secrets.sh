@@ -1,0 +1,1 @@
+kubectl create secret generic gitlab-secret --namespace gitlab --from-file=./REGISTRATION_TOKEN

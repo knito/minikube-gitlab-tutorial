@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   creationTimestamp: null
@@ -8,6 +8,9 @@ spec:
   replicas: 1
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      name: gitlab-runner
   template:
     metadata:
       labels:
@@ -25,7 +28,7 @@ spec:
           privileged: true
         env:
         - name: CI_SERVER_URL
-          value: "http://gitlab/ci"
+          value: "https://gitlab.com"
         - name: RUNNER_NAME
           value: "Gitlab Runner kubernetes"
         - name: REGISTRATION_TOKEN
@@ -54,7 +57,7 @@ spec:
           privileged: true
         env:
         - name: CI_SERVER_URL
-          value: "http://gitlab/ci"
+          value: "https://gitlab.com"
         - name: RUNNER_NAME
           value: "Gitlab Runner docker"
         - name: REGISTRATION_TOKEN
