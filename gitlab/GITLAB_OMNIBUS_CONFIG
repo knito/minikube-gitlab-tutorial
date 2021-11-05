@@ -1,4 +1,4 @@
 external_url 'http://gitlab'
 postgresql['enable'] = true
-gitlab_rails['initial_shared_runners_registration_token'] = "xxxxxxxxxxxxxxxxxx"
+gitlab_rails['initial_shared_runners_registration_token'] = "TokenTokenTokenTokenTokenTokenToken"
 gitlab_rails['initial_root_password'] = "InitialPassword"

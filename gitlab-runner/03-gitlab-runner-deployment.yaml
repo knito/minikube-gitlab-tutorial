@@ -41,7 +41,7 @@ spec:
         - name: RUNNER_EXECUTOR
           value: "kubernetes"
         - name: RUNNER_TAG_LIST
-          value: "kubernetes"
+          value: "gitlab-shared-runners,kubernetes"
         - name: KUBERNETES_NAMESPACE
           value: "gitlab"
         command: ["/bin/bash"]
@@ -70,7 +70,7 @@ spec:
         - name: RUNNER_EXECUTOR
           value: "docker"
         - name: RUNNER_TAG_LIST
-          value: "docker"
+          value: "gitlab-shared-runners,docker"
         - name: DOCKER_VOLUMES
           value: "/var/run/docker.sock:/var/run/docker.sock"
         - name: DOCKER_IMAGE
@@ -81,10 +81,10 @@ spec:
           value: "false"
         - name: DOCKER_CACHE_DIR
           value: "/cache"
-        - name: DOCKER_DNS_SEARCH
-          value: "gitlab.svc.cluster.local"
-        - name: DOCKER_DNS
-          value: "10.0.0.10"
+        # - name: DOCKER_DNS_SEARCH
+        #   value: "gitlab.svc.cluster.local"
+        # - name: DOCKER_DNS
+        #   value: "10.0.0.10"
         command: ["/bin/bash"]
         args: ["-c", "gitlab-runner register docker; /usr/bin/dumb-init /entrypoint run --user=gitlab-runner --working-directory=/home/gitlab-runner"]
       restartPolicy: Always
